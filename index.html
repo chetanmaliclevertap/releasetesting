@@ -4,17 +4,17 @@
         <link rel="manifest" href="/web-sdk-test/manifest.json">
 	    <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <script type="text/javascript">
-              var clevertap = { event: [], profile: [], account: [], region: 'sk1-staging-17' };
+              var clevertap = { event: [], profile: [], account: [], region: 'sk1-staging-16' };
 	//	var clevertap = { event: [], profile: [], account: [], region: 'eu1' };
-             clevertap.account.push({ id: "WR5-Z98-W56Z" }); // QA Champs  
-      //      clevertap.account.push({ id: "ZWW-WWW-WWRZ" }); // Web Testing 
+       //      clevertap.account.push({ id: "WR5-Z98-W56Z" }); // QA Champs  
+            clevertap.account.push({ id: "884-5ZW-8Z7Z" }); // CM Testing 
             (function() {
                 var wzrk = document.createElement("script");
                 wzrk.type = "text/javascript";
                 wzrk.async = true;
                 //wzrk.src = "a.js";
                 //wzrk.src = "clevertap.js";
-		  wzrk.src = 'https://d2r1yp2w7bby2u.cloudfront.net/js/clevertap.min.js';
+	//	  wzrk.src = 'https://d2r1yp2w7bby2u.cloudfront.net/js/clevertap.min.js';
 		  //  		 wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@task/SDK-3189/add_debug_flag/clevertap.js';
 		    // wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@develop/clevertap.js'
  //      wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@task/WEB-2529/carousel-button-bugfix/clevertap.min.js';
@@ -27,7 +27,7 @@
 		  //  wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@master/clevertap.js'
 		//    wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@task/SDK-2912/inbox_freqcaps/clevertap.js'
 		 //   wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@task/SDK-2937/imageonly_housekeeping/clevertap.js'
-		 //   wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@task/SDK-2950/nativedisplay_divid/clevertap.js'
+		    wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@task/visual-editor-security/clevertap.min.js'
                 var s = document.getElementsByTagName("script")[0];
                 s.parentNode.insertBefore(wzrk, s);
             })();
