@@ -3,6 +3,9 @@
     <head>
         <link rel="manifest" href="/web-sdk-test/manifest.json">
 	    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+	    <script>
+  function applyAntiFlicker(){const e=document.documentElement;e.classList.add("anti-flicker-hide"),setTimeout((()=>{e.classList.remove("anti-flicker-hide")}),2000)}function observeUrlChange(){let e=document.location.href;new MutationObserver((()=>{e!==document.location.href&&(e=document.location.href,applyAntiFlicker())})).observe(document.body,{childList:!0,subtree:!0})}!function(){const e="flicker-style";if(!document.getElementById(e)){const t=document.createElement("style");t.id=e,t.textContent=".anti-flicker-hide { opacity: 0 !important; }",document.head.appendChild(t)}}(),window.addEventListener("load",(()=>{observeUrlChange(),applyAntiFlicker()}));
+</script>
         <script type="text/javascript">
               var clevertap = { event: [], profile: [], account: [], region: 'sk1-staging-16' };
 	//	var clevertap = { event: [], profile: [], account: [], region: 'eu1' };
