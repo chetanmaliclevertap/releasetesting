@@ -7,8 +7,101 @@
   function applyAntiFlicker(){const e=document.documentElement;e.classList.add("anti-flicker-hide"),setTimeout((()=>{e.classList.remove("anti-flicker-hide")}),2000)}function observeUrlChange(){let e=document.location.href;new MutationObserver((()=>{e!==document.location.href&&(e=document.location.href,applyAntiFlicker())})).observe(document.body,{childList:!0,subtree:!0})}!function(){const e="flicker-style";if(!document.getElementById(e)){const t=document.createElement("style");t.id=e,t.textContent=".anti-flicker-hide { opacity: 0 !important; }",document.head.appendChild(t)}}(),window.addEventListener("load",(()=>{observeUrlChange(),applyAntiFlicker()}));
 </script> -->
 
-	    <script>
+<!-- 	    <script>
   const personalizedSelectors=[],delay=2000((function(e,t){const n={};let o,i=0;function c(e){function c(e){const o=[];e.forEach((e=>{const t=document.querySelectorAll(e);t.length?(t.forEach((e=>{(function(e){const t=e.getBoundingClientRect(),{innerHeight:n,innerWidth:o}=window;return t.bottom>0&&t.right>0&&t.top<n&&t.left<o&&(e.complete||4===e.readyState)})(e)||o.push(e)})),delete n[e]):n[e]=!1})),function(e){e.forEach((e=>e.classList.add("anti-flicker-hide"))),setTimeout((()=>{e.forEach((e=>{e.classList.remove("anti-flicker-hide"),e.classList.add("anti-flicker-show")}))}),t)}(o)}c(e),Object.keys(n).length&&(o=setInterval((function(){c(Object.keys(n)),i++,(0===Object.keys(n).length||i>20)&&(i=0,clearInterval(o))}),100))}!function(){const e="flicker-style";if(!document.getElementById(e)){const t=document.createElement("style");t.id=e,t.textContent=".anti-flicker-hide{opacity: 0!important}.anti-flicker-show {transition: opacity 0.5s, filter 0.5s !important}",document.head.appendChild(t)}}(),window.addEventListener("load",(()=>{!function(){let t=document.location.href;new MutationObserver((()=>{t!==document.location.href&&(t=document.location.href,c(e))})).observe(document.body,{childList:!0,subtree:!0})}(),c(e)}))}))(['#bell-selector', '.my-text'],delay);
+</script> -->
+
+	    <script>
+  const personalizedSelectors = ['#bell-selector', '.my-text'];
+  const delay = 2000 //time in ms;
+  (function (personalizedSelectors, delayTime) {
+    const retryElements = {}; // Track selectors that need retry
+    let retryCount = 0; // Counter for retries
+    let retryInterval;
+    function isInViewport (element) {
+      const rect = element.getBoundingClientRect();
+      const { innerHeight: windowHeight, innerWidth: windowWidth } = window;
+      return (
+        rect.bottom > 0 &&
+        rect.right > 0 &&
+        rect.top < windowHeight &&
+        rect.left < windowWidth &&
+        (element.complete || element.readyState === 4)
+      );
+    };
+    (function () {
+      const styleContent = `
+        .anti-flicker-hide {
+          opacity: 0 !important
+        }
+        .anti-flicker-show {
+          transition: opacity 0.5s, filter 0.5s !important
+        }
+      `;
+      // Create and append the style element if it doesn't exist
+      const styleId = 'flicker-style';
+      if (!document.getElementById(styleId)) {
+        const styleElement = document.createElement('style');
+        styleElement.id = styleId;
+        styleElement.textContent = styleContent;
+        document.head.appendChild(styleElement);
+      }
+    })();
+    function applyAntiFlicker (selectors) {
+      function processSelectors (selectorElements) {
+        const elements = [];
+        selectorElements.forEach(selector => {
+          const matchedElements = document.querySelectorAll(selector);
+          if (matchedElements.length) {
+            matchedElements.forEach(el => {
+              if (!isInViewport(el)) {
+                elements.push(el);
+              }
+            })
+            delete retryElements[selector]; // Successfully processed, remove from retry list
+          } else {
+            retryElements[selector] = false; // Add to retry list if not found
+          }
+        })
+        applyStyles(elements);
+      }
+      function retryProcessing () {
+        processSelectors(Object.keys(retryElements));
+        retryCount++;
+        if (Object.keys(retryElements).length === 0 || retryCount > 20) {
+          retryCount = 0;
+          clearInterval(retryInterval);
+        }
+      }
+      processSelectors(selectors);
+      if (Object.keys(retryElements).length) {
+        retryInterval = setInterval(retryProcessing, 100);
+      }
+    }
+    function applyStyles (elements) {
+      elements.forEach(el => el.classList.add('anti-flicker-hide'))
+        setTimeout(() => {
+          elements.forEach(el => {
+          el.classList.remove('anti-flicker-hide');
+          el.classList.add('anti-flicker-show');
+        })
+      }, delayTime) // Apply styles after maxRenderTime
+    }
+    function observeUrlChange () {
+      let previousHref = document.location.href;
+      const observer = new MutationObserver(() => {
+        if (previousHref !== document.location.href) {
+          previousHref = document.location.href;
+          applyAntiFlicker(personalizedSelectors);
+        }
+      })
+      observer.observe(document.body, { childList: true, subtree: true });
+    }
+    window.addEventListener('load', () => {
+      observeUrlChange();
+      applyAntiFlicker(personalizedSelectors);
+    })
+  })(personalizedSelectors, delay);
 </script>
 	    
         <script type="text/javascript">
