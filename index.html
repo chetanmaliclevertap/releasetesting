@@ -12,7 +12,7 @@
 </script> -->
 
 	    <script>
-  const personalizedSelectors = ['#bell-selector', '.nav'];
+  const personalizedSelectors = ['#bell-selector', '.test'];
   const delay = 2000; //time in ms;
   (function (personalizedSelectors, delayTime) {
     const retryElements = {}; // Track selectors that need retry
@@ -52,6 +52,7 @@
         const elements = [];
         selectorElements.forEach(selector => {
           const matchedElements = document.querySelectorAll(selector);
+		console.log(matchedElements);
           if (matchedElements.length) {
             matchedElements.forEach(el => {
               if (!isInViewport(el)) {
