@@ -52,9 +52,9 @@
         const elements = [];
         selectorElements.forEach(selector => {
           const matchedElements = document.querySelectorAll(selector);
-		console.log(matchedElements);
           if (matchedElements.length) {
             matchedElements.forEach(el => {
+		  console.log(isInViewport(el));
               if (!isInViewport(el)) {
 		      console.log(el);
                 elements.push(el);
