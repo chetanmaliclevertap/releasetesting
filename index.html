@@ -117,12 +117,15 @@
             (function() {
                 var wzrk = document.createElement("script");
                 wzrk.type = "text/javascript";
-                wzrk.async = true;
+		wzrk.onload = () => {
+			   console.log('encryption testing '); 
+			clevertap.encryptLocalStorage(true)  }                
+			wzrk.async = true;
                 //wzrk.src = "a.js";
                 //wzrk.src = "clevertap.js";
 	//	  wzrk.src = 'https://d2r1yp2w7bby2u.cloudfront.net/js/clevertap.min.js';
 		  //  		 wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@task/SDK-3189/add_debug_flag/clevertap.js';
-		     wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@insert-new-ve/clevertap.js'
+		     wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@9cd816c3ecb5e8aee5325408e68f3011aeb9ad28/clevertap.js'
  //      wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@task/WEB-2529/carousel-button-bugfix/clevertap.min.js';
 //		wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@bugfix/WEB-2664/deeplink_issue_fix/clevertap.min.js';
 
