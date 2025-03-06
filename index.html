@@ -125,7 +125,7 @@
                 //wzrk.src = "clevertap.js";
 	//	  wzrk.src = 'https://d2r1yp2w7bby2u.cloudfront.net/js/clevertap.min.js';
 		  //  		 wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@task/SDK-3189/add_debug_flag/clevertap.js';
-		     wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@develop/clevertap.js'
+		     wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@e4f4e1d145406254e69f9dddeb95b2ff3659c7ae/clevertap.js'
  //      wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@task/WEB-2529/carousel-button-bugfix/clevertap.min.js';
 //		wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@bugfix/WEB-2664/deeplink_issue_fix/clevertap.min.js';
 
@@ -152,17 +152,31 @@
     </head>
     <body>
         <script type="text/javascript">
+
+		  document.addEventListener('CT_web_native_display_json', (event) => {
+    const eventData = event.detail;
+    console.log('Custom Event Data:', eventData);
+    console.log('Chetan event listener added for Json');
+  });
             
-            document.addEventListener("CT_web_native_display", function(event) {
+      document.addEventListener("CT_web_native_display", function(event) {
     const data = event.detail;
-	const topic = data.kv.topic;
-	switch (topic) {
-	    case "Cart drop-off": {
-			renderCartDropOffPersonalisationCampaign(data)
-			break;
-        }
+    const topic = data.kv.topic;
+    switch (topic) {
+      case "Cart drop-off": {
+        renderCartDropOffPersonalisationCampaign(data)
+        break;
+      }
+      case "MAK1": {
+        renderCartDropOffPersonalisationCampaign(data)
+        break;
+      }
+      default: {
+        renderCartDropOffPersonalisationCampaign(data)
+        break;
+      }
     }
-});
+  });
 
 function renderCartDropOffPersonalisationCampaign (data) {
 	const name = data.kv.Name;
