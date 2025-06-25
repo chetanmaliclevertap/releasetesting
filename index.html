@@ -110,44 +110,34 @@
 </script>
 	    
           <script type="text/javascript">
-    // Get Account id and region from query string
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const accountId = urlParams.get("accountId") ?? `8W8-ZKW-5K7Z`;
-    const region = urlParams.get("region") ?? `sk1`;
-    const token = urlParams.get("token");
+             // var clevertap = { event: [], profile: [], account: [], region: 'sk1-staging-30', token: '012-b64' };
+		var clevertap = { event: [], profile: [], account: [], region: 'sk1-staging-4' };
+             clevertap.account.push({ id: "884-5ZW-8Z7Z" }); // Mobile_Channels 
+  //          clevertap.account.push({ id: "ZWW-WWW-WWRZ" }); // WCC Team Returns account 
+            (function() {
+                var wzrk = document.createElement("script");
+                wzrk.type = "text/javascript";
+                wzrk.async = true;
+                //wzrk.src = "a.js";
+                //wzrk.src = "clevertap.js";
+		 // wzrk.src = 'https://d2r1yp2w7bby2u.cloudfront.net/js/clevertap.min.js';
+		        wzrk.src = "https://static.clevertap.com/staging/WEB-3773/js/clevertap.js"
+		  //  wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@task/SDK-2454/carousel_height_fix/clevertap.js';
+		   // wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@task/SDK-2041/web_inbox/clevertap.js'
+		//    wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@task/SDK-3050/inbox_bugfix/clevertap.js'
+		//    wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@task/SDK-3189/add_debug_flag/clevertap.js'
+		//    wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@develop/clevertap.js'
+		 //       wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@pe_bug_fix/clevertap.min.js'
+		//    wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@task/SDK-2912/inbox_freqcaps/clevertap.js'
+		 //   wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@task/SDK-2937/imageonly_housekeeping/clevertap.js'
+		 //   wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@task/SDK-2950/nativedisplay_divid/clevertap.js'
+		  //  wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@task/SDK-3035/camp_cookie_fix/clevertap.js'
+		 //   wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@task/SDK-3029/imageonly_freqcaps/clevertap.js'
 
-    var clevertap = {
-      event: [],
-      profile: [],
-      account: [],
-      onUserLogin: [],
-      notifications: [],
-      privacy: [],
-      // config : {
-      //   customId : "testing_custom_id"
-      // }
-    };
-    // replace with the CLEVERTAP_ACCOUNT_ID with the actual ACCOUNT ID value from your Dashboard -> Settings page
-    clevertap.account.push({ id: accountId }, region, "", token);
-    // clevertap.account.push({ id: "W67-774-7Z5Z" }, "us1");
-    clevertap.privacy.push({ optOut: false }); //set the flag to true, if the user of the device opts out of sharing their data
-    clevertap.privacy.push({ useIP: false }); //set the flag to true, if the user agre   es to share their IP data
-    (function () {
-      var wzrk = document.createElement("script");
-      wzrk.type = "text/javascript";
-      wzrk.async = true;
-      // wzrk.src = "https://d2r1yp2w7bby2u.cloudfront.net/js/clevertap.js";
-      // wzrk.src = "https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@master/clevertap.js"
-      wzrk.src = "https://static.clevertap.com/staging/WEB-3773/js/clevertap.js"
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(wzrk, s);
-    })();
-
-    // clevertap.event.push("Product Viewed");
-    clevertap.event.push("Product Viewed");
-    // clevertap.event.push('Added To Cart')
-  </script>
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(wzrk, s);
+            })();
+        </script>	
 	    
     </head>
     <body>
